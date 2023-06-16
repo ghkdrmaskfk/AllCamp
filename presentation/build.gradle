@@ -1,0 +1,113 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    namespace 'com.hoon.allcamp'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.hoon.allcamp"
+        minSdk 26
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.0'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation ("androidx.core:core-ktx:$core_ktx_version")
+
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+
+    implementation ("androidx.compose.material:material:$compose_material_version")
+
+    implementation ("androidx.activity:activity-compose:$activity_version")
+
+    implementation "androidx.compose.ui:ui:$compose_ui_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui_version"
+
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
+
+    // JUnit5
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junit_version")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit_version")
+
+    // mockito5
+    testImplementation ("org.mockito:mockito-core:$mockito_version")
+
+    implementation("androidx.paging:paging-runtime:$paging_version")
+
+    // glide
+    implementation ("com.github.bumptech.glide:glide:$glide_version")
+
+    // hilt
+    implementation("com.google.dagger:hilt-android:$hilt_version")
+    kapt "com.google.dagger:hilt-compiler:${hilt_version}"
+
+    // retrofit2
+    implementation ("com.squareup.retrofit2:retrofit:$retrofit_version")
+
+    // gson
+    implementation ("com.google.code.gson:gson:$retrofit_version")
+
+    // gson converter
+    implementation ("com.squareup.retrofit2:converter-gson:$retrofit_version")
+
+    // okHttp
+    implementation ("com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version")
+
+    // room
+    implementation ("androidx.room:room-runtime:$room_version")
+    kapt ("androidx.room:room-compiler:$room_version")
+
+    // navigation
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    //android 12 auto splash api
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+
+    //lottie
+    implementation ("com.airbnb.android:lottie:$lottie_version")
+
+    // Logger
+    implementation 'com.orhanobut:logger:2.2.0'
+}
